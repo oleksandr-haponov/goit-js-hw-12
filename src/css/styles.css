@@ -41,6 +41,13 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
+  
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 main {
