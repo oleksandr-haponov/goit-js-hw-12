@@ -67,7 +67,7 @@ form.addEventListener('submit', async e => {
 });
 
 function smoothScroll() {
-  const card = document.querySelector('.photo-card');
+  const card = document.querySelector('.gallery-item');
   if (card) {
     const cardHeight = card.getBoundingClientRect().height;
     window.scrollBy({
