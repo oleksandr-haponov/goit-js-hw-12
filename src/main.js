@@ -16,7 +16,7 @@ const input = document.querySelector('input[name="search-text"]');
 const loadBtn = document.querySelector('.load-btn');
 
 let query = '';
-let page = 0;
+let page = 1;
 const perPage = 15;
 let totalHits = 0;
 
@@ -38,9 +38,9 @@ form.addEventListener('submit', async e => {
   try {
     const data = await getImagesByQuery(query, page, perPage);
     totalHits = data.totalHits;
-    // totalHits = 100;
+  
 
-    setTimeout(() => {
+    
       hideLoader();
 
       if (data.hits.length === 0) {
@@ -56,7 +56,7 @@ form.addEventListener('submit', async e => {
 
       createGallery(data.hits);
       if (page * perPage < totalHits) showLoadMoreButton();
-    }, 600);
+
   } catch (error) {
     hideLoader();
     iziToast.error({
@@ -85,11 +85,10 @@ loadBtn.addEventListener('click', async () => {
 
   try {
     const data = await getImagesByQuery(query, page, perPage);
-    setTimeout(() => {
+    
       hideLoader();
       createGallery(data.hits);
       smoothScroll();
-      //   console.log(data.hits.map(img => img.id));
 
       if (page * perPage >= totalHits) {
         iziToast.info({
@@ -100,7 +99,7 @@ loadBtn.addEventListener('click', async () => {
       } else {
         showLoadMoreButton();
       }
-    }, 600);
+    
   } catch (error) {
     hideLoader();
     iziToast.error({
