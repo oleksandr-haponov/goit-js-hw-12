@@ -1,8 +1,9 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const gallery = document.querySelector('.gallery');
+export const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
+const loadBtn = document.querySelector('.load-btn');
 
 const lightbox = new SimpleLightbox('.gallery a');
 
@@ -18,8 +19,7 @@ export function createGallery(images) {
         comments,
         downloads,
       }) => {
-        return `
-        <li class="photo-card">
+        return `<li class="photo-card">
           <a href="${largeImageURL}">
             <img src="${webformatURL}" alt="${tags}" loading="lazy" />
           </a>
@@ -34,7 +34,6 @@ export function createGallery(images) {
       }
     )
     .join('');
-
   gallery.insertAdjacentHTML('beforeend', markup);
 
   lightbox.refresh();
@@ -50,4 +49,12 @@ export function showLoader() {
 
 export function hideLoader() {
   loader.classList.remove('active');
+}
+
+export function showLoadMoreButton() {
+  loadBtn.classList.add('active');
+}
+
+export function hideLoadMoreButton() {
+  loadBtn.classList.remove('active');
 }
